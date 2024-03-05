@@ -1,17 +1,12 @@
 package ru.hse.restaurant.management.system.mappers
 
-import lombok.AllArgsConstructor
 import org.mapstruct.*
-import org.springframework.stereotype.Component
 import ru.hse.restaurant.management.system.data.entities.User
 import ru.hse.restaurant.management.system.dto.DtoUser
 
-
-@Mapper
-@AllArgsConstructor
+@Mapper(componentModel = "spring")
 interface UserDtoToUserDataEntityMapper {
-    @Mapping(source = "username", target = "username")
-    @Mapping(source = "password", target = "password")
-    @Mapping(source = "phoneNum", target = "phoneNum")
+    @Mapping(target = "id", expression = "java(java.util.UUID.randomUUID())")
+    @Mapping(target = "role", expression = "java(ru.hse.restaurant.management.system.enums.Role.USER)")
     fun map(dtoUser: DtoUser): User
 }

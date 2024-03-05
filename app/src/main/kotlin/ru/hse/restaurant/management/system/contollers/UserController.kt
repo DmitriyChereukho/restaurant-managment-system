@@ -13,7 +13,8 @@ import java.util.*
 @RestController
 @RequestMapping("/users")
 class UserController(
-    @Autowired private val userRepository: UserRepository
+    @Autowired private val userRepository: UserRepository,
+    @Autowired private val userDtoToUserDataEntityMapper: UserDtoToUserDataEntityMapper
 ) {
 
     @GetMapping("")
@@ -22,16 +23,7 @@ class UserController(
 
     @PostMapping("/signup")
     fun signUp(@RequestBody dtoUser: DtoUser): ResponseEntity<User> {
-        return ResponseEntity.ok(
-            userRepository.save(
-                User(
-                    "username",
-                    "password",
-                    "phoneNum",
-                    Role.USER,
-                    UUID.randomUUID()
-                )
-            )
-        )
+        val user = userDtoToUserDataEntityMapper.map(dtoUser)
+        return ResponseEntity.ok(userRepository.save(user))
     }
 }
