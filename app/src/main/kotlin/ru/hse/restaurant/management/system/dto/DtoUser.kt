@@ -1,11 +1,11 @@
-package ru.hse.restaurant.managment.system.dtos
+package ru.hse.restaurant.management.system.dto
 
 import lombok.Builder
 import lombok.Data
 
 @Data
 @Builder
-data class User(
+data class DtoUser(
     val username: String,
     val password: String,
     val phoneNum: String,
