@@ -5,9 +5,6 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Service
-import ru.hse.restaurant.management.system.data.repositories.UserRepository
-
-typealias ApplicationUser = ru.hse.restaurant.management.system.data.entities.User
 
 @Service
 class AuthUserDetailsService(private val userService: UserService) : UserDetailsService {

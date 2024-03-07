@@ -26,7 +26,7 @@ class JwtFilter(
             return
         }
 
-        val token = authorizationHeader!!.substringAfter("Bearer ")
+        val token = authorizationHeader.substringAfter("Bearer ")
         val phoneNum = jwtService.extractPhoneNum(token)
         if (phoneNum != null && SecurityContextHolder.getContext().authentication == null) {
             val userDetails = userDetailsService.loadUserByUsername(phoneNum)

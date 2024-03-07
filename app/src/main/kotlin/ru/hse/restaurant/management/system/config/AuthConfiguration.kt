@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import ru.hse.restaurant.management.system.data.repositories.UserRepository
 import ru.hse.restaurant.management.system.services.AuthUserDetailsService
 import ru.hse.restaurant.management.system.services.UserService
 

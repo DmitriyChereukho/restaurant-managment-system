@@ -4,8 +4,6 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import ru.hse.restaurant.management.system.data.entities.User
 import ru.hse.restaurant.management.system.data.repositories.UserRepository
-import ru.hse.restaurant.management.system.dto.DtoUser
-import ru.hse.restaurant.management.system.mappers.UserDtoUserDataEntityMapper
 
 @Service
 class UserServiceImpl(
