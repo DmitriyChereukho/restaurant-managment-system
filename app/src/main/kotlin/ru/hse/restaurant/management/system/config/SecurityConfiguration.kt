@@ -27,6 +27,7 @@ class SecurityConfiguration(private val authenticationProvider: AuthenticationPr
                     .fullyAuthenticated()
             }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+            .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
             .build()
     }
