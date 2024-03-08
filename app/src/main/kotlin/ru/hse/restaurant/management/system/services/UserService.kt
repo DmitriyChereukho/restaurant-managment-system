@@ -8,4 +8,6 @@ interface UserService {
     fun createUser(user: User) : User
 
     fun findByPhoneNum(phoneNum: String) : User?
+
+    fun createAdmin(user: User) : User
 }
