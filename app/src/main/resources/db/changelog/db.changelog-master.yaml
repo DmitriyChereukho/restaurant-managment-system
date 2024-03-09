@@ -9,3 +9,6 @@ databaseChangeLog:
   - include:
       file: dish.sql
       relativeToChangelogFile: true
+  - include:
+      file: order.sql
+      relativeToChangelogFile: true

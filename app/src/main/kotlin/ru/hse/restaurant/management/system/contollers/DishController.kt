@@ -1,5 +1,6 @@
 package ru.hse.restaurant.management.system.contollers
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import ru.hse.restaurant.management.system.dto.DtoDish
@@ -9,8 +10,8 @@ import ru.hse.restaurant.management.system.services.DishService
 @RestController
 @RequestMapping("/dishes")
 class DishController(
-    private val dishService: DishService,
-    private val dishDtoDishDataEntityMapper: DishDtoDishDataEntityMapper
+    @Autowired private val dishService: DishService,
+    @Autowired private val dishDtoDishDataEntityMapper: DishDtoDishDataEntityMapper
 ) {
 
     @GetMapping("")

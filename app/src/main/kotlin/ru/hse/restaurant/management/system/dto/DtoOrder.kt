@@ -5,8 +5,8 @@ import lombok.Data
 
 @Data
 @Builder
-data class DtoDish(
-    val name: String,
-    val price: Int,
-    val cookingTime: Int
+data class DtoOrder(
+    val user: DtoUser,
+    val dishes: List<DtoDish>,
+    val status: String,
 )

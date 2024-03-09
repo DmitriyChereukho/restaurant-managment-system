@@ -13,7 +13,7 @@ import java.util.*
 @Table(name = "dishes")
 @Builder
 data class Dish(
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     val name: String,
 
     @Column(name = "price")
@@ -24,5 +24,5 @@ data class Dish(
 
     @Id
     @Column(name = "id")
-    val id: UUID
+    private val id: UUID
 )

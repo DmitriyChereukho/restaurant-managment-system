@@ -10,4 +10,6 @@ interface UserService {
     fun findByPhoneNum(phoneNum: String) : User?
 
     fun createAdmin(user: User) : User
+
+    fun findByToken(token: String) : User
 }

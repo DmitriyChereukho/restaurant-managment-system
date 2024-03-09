@@ -9,7 +9,8 @@ import ru.hse.restaurant.management.system.enums.Role
 @Service
 class UserServiceImpl(
     private val userRepository: UserRepository,
-    private val encoder: PasswordEncoder
+    private val encoder: PasswordEncoder,
+    private val jwtService: JwtService
 ) : UserService {
     override fun findAllUsers(): List<User> {
         return userRepository.findAll()
@@ -30,5 +31,10 @@ class UserServiceImpl(
             role = Role.ADMIN
         )
         return userRepository.save(updatedUser)
+    }
+
+    override fun findByToken(token: String): User {
+        val phoneNum = jwtService.extractPhoneNum(token)
+        return findByPhoneNum(phoneNum!!)!!
     }
 }
