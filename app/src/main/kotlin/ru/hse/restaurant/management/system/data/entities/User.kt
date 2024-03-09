@@ -3,8 +3,6 @@ package ru.hse.restaurant.management.system.data.entities
 import jakarta.persistence.*
 import lombok.Builder
 import lombok.Data
-import lombok.Getter
-import lombok.Setter
 import ru.hse.restaurant.management.system.enums.Role
 import java.util.*
 
