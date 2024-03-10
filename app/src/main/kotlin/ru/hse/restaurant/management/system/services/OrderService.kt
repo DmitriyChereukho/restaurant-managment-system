@@ -1,7 +1,6 @@
 package ru.hse.restaurant.management.system.services
 
 import org.springframework.http.HttpStatus
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 import ru.hse.restaurant.management.system.data.entities.Dish
