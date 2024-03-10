@@ -9,4 +9,5 @@ data class DtoOrder(
     val user: DtoUser,
     val dishes: List<DtoDish>,
     val status: String,
+    val comment: String?
 )

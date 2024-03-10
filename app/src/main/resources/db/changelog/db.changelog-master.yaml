@@ -15,3 +15,6 @@ databaseChangeLog:
   - include:
       file: order_dish.sql
       relativeToChangelogFile: true
+  - include:
+      file: order_dish_to_cook.sql
+      relativeToChangelogFile: true

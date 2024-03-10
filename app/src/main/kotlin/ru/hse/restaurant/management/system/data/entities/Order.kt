@@ -15,19 +15,30 @@ data class Order(
     @JoinColumn(name = "user_id")
     val user: User,
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-        name = "order_dishes",
+        name = "orders_dishes",
         joinColumns = [JoinColumn(name = "order_id")],
         inverseJoinColumns = [JoinColumn(name = "dish_id")]
     )
     val dishes: List<Dish>,
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "orders_dishes_to_cook",
+        joinColumns = [JoinColumn(name = "order_id")],
+        inverseJoinColumns = [JoinColumn(name = "dish_id")]
+    )
+    val dishesToCook: List<Dish>,
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     val status: OrderStatus,
 
+    @Column(name = "comment")
+    val comment: String? = null,
+
     @Id
     @Column(name = "id")
-    private val id: UUID
+    val id: UUID
 )
