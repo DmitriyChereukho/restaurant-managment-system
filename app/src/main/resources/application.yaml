@@ -7,3 +7,7 @@ spring:
     username: dachereukho
     password: qwerty
 
+jwt:
+  key: ${JWT_KEY}
+  access-token-expiration: 86400000
+  refresh-token-expiration: 86400000

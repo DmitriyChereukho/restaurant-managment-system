@@ -1,27 +1,40 @@
 package ru.hse.restaurant.management.system.contollers
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.ResponseEntity
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import ru.hse.restaurant.management.system.data.entities.User
-import ru.hse.restaurant.management.system.data.repositories.UserRepository
-import ru.hse.restaurant.management.system.enums.Role.USER
+import ru.hse.restaurant.management.system.dto.DtoUser
+import ru.hse.restaurant.management.system.mappers.UserDtoUserDataEntityMapper
+import ru.hse.restaurant.management.system.services.UserService
 
 @RestController
 @RequestMapping("/users")
-class UserController(@Autowired private val userRepository: UserRepository) {
+class UserController(
+    @Autowired private val userService: UserService,
+    @Autowired private val userDtoUserDataEntityMapper: UserDtoUserDataEntityMapper
+) {
 
     @GetMapping("")
-    fun getUsers(): List<User> =
-        userRepository.findAll()
+    @ResponseBody
+    fun getUsers(): List<DtoUser> {
+        return userService.findAllUsers().map {
+            userDtoUserDataEntityMapper.map(it)
+        }
+    }
 
-    @PostMapping("/signup")
-    fun signUp(
-        @RequestParam("username") username: String,
-        @RequestParam("password") password: String,
-        @RequestParam("phoneNum") phoneNum: String
-    ): ResponseEntity<User> {
-        val user = User(username, password, phoneNum, USER, 1)
-        return ResponseEntity.ok(userRepository.save(user))
+    @PostMapping("")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    fun createUser(@RequestBody user: DtoUser): DtoUser {
+        val userEntity = userDtoUserDataEntityMapper.map(user)
+        return userDtoUserDataEntityMapper.map(userService.createUser(userEntity))
+    }
+
+    @PostMapping("/admin")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    fun createAdmin(@RequestBody user: DtoUser): DtoUser {
+        val userEntity = userDtoUserDataEntityMapper.map(user)
+        return userDtoUserDataEntityMapper.map(userService.createAdmin(userEntity))
     }
 }
